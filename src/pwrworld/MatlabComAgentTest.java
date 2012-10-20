@@ -1,5 +1,7 @@
 package pwrworld;
 
+import java.io.IOException;
+
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;
@@ -33,10 +35,8 @@ public class MatlabComAgentTest extends Agent
 	static String PWRWORLD_NAME = "matlabComAgent"; 
 	String matlabAgent = PWRWORLD_NAME;
 	
-	// Change this path to the one of the file you want to open: TODO
-	static String powerWorldFilePath = "C:/Users/rroche/code/jJadePwrWorld/powerworld/ieee14.pwb";
-	static String powerWorldFilePath2 = "C:/Users/rroche/code/jJadePwrWorld/powerworld/ieee14_saved.pwb";
-	
+	static String powerWorldFilePath;
+	static String powerWorldFilePath2;
 	
 	
 	
@@ -45,6 +45,16 @@ public class MatlabComAgentTest extends Agent
 	{
 		System.out.println(getName() + " successfully started");
 
+		// Get files path
+		// Change this path to the one of the file you want to open: TODO
+		try 
+		{
+			String path = new java.io.File(".").getCanonicalPath();
+			powerWorldFilePath = path + "/powerworld/ieee14.pwb";
+			powerWorldFilePath2 = path + "/powerworld/ieee14_saved.pwb";
+		} 
+		catch (IOException e) {e.printStackTrace();}
+		
 		// Wait for a message from the server agent to start sending request
 		MessageTemplate mt = MessageTemplate.MatchConversationId("start-now");
 		blockingReceive(mt).getContent();
@@ -87,7 +97,7 @@ public class MatlabComAgentTest extends Agent
 			/* INITIALIZE */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF CASES CAN BE OPENED AND SWITCH TO EDIT MODE");
+			System.out.println("TESTING IF CASES CAN BE OPENED AND SWITCH TO EDIT MODE");
 			System.out.println("*******************************");
 			
 			// Open case
@@ -100,7 +110,7 @@ public class MatlabComAgentTest extends Agent
 			/* LIST DEVICES */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF DEVICE LISTING WORKS");
+			System.out.println("TESTING IF DEVICE LISTING WORKS");
 			System.out.println("*******************************");
 			
 			// List buses
@@ -135,7 +145,7 @@ public class MatlabComAgentTest extends Agent
 			/* GET PARAMETERS MULTIPLE */
 				
 			System.out.println("*******************************");
-			System.out.println("TEST IF GETTING PARAMETERS FOR MULTIPLE ELEMENTS WORKS");
+			System.out.println("TESTING IF GETTING PARAMETERS FOR MULTIPLE ELEMENTS WORKS");
 			System.out.println("*******************************");
 			
 			// Get parameters of all buses
@@ -182,7 +192,7 @@ public class MatlabComAgentTest extends Agent
 			/* GET PARAMETERS SINGLE */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF GETTING PARAMETERS FOR A SINGLE ELEMENT WORKS");
+			System.out.println("TESTING IF GETTING PARAMETERS FOR A SINGLE ELEMENT WORKS");
 			System.out.println("*******************************");
 			
 			// Get parameters for one bus (bus 1)
@@ -238,7 +248,7 @@ public class MatlabComAgentTest extends Agent
 			/* CHANGE PARAMETERS MULTIPLE */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF CHANGING PARAMETERS FOR SEVERAL ELEMENTS WORKS");
+			System.out.println("TESTING IF CHANGING PARAMETERS FOR SEVERAL ELEMENTS WORKS");
 			System.out.println("*******************************");
 			
 			// Change parameters for several buses (changes names for buses 1 and 2) 
@@ -281,7 +291,7 @@ public class MatlabComAgentTest extends Agent
 			/* CHANGE PARAMETERS SINGLE */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF CHANGING PARAMETERS FOR A SINGLE ELEMENT WORKS");
+			System.out.println("TESTING IF CHANGING PARAMETERS FOR A SINGLE ELEMENT WORKS");
 			System.out.println("*******************************");
 			
 			// Change parameters for a bus (change name of bus 1)
@@ -320,7 +330,7 @@ public class MatlabComAgentTest extends Agent
 			/* TEST CHANGES */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST IF CHANGES ARE REALLY WORKING");
+			System.out.println("TESTING IF CHANGES ARE REALLY WORKING");
 			System.out.println("*******************************");
 			
 			// Get parameters for a load (load on bus 2)
@@ -362,7 +372,7 @@ public class MatlabComAgentTest extends Agent
 			/* SCRIPT COMMANDS */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST SWITCHING TO RUN MODE AND RUNNING A POWER FLOW");
+			System.out.println("TESTING SWITCHING TO RUN MODE AND RUNNING A POWER FLOW");
 			System.out.println("*******************************");
 			
 			// Switch to run mode
@@ -375,7 +385,7 @@ public class MatlabComAgentTest extends Agent
 			/* END CONNECTION */
 			
 			System.out.println("*******************************");
-			System.out.println("TEST SAVING THE FILE, CLOSING IT AND CLOSING THE CONNECTION");
+			System.out.println("TESTING SAVING THE FILE, CLOSING IT AND CLOSING THE CONNECTION");
 			System.out.println("*******************************");
 			
 			// Save case

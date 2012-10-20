@@ -50,7 +50,7 @@ public class Launcher
 		p = new ProfileImpl();
 		cController = rt.createMainContainer(p);			
 		rt.setCloseVM(true);
-		
+	
 		// Launch Powerworld interface agent
 		addAgent(PWRWORLD_NAME, PWRWORLD_CLASS, null);
 		addAgent(PWRWORLD_TESTER_NAME, PWRWORLD_TESTER_CLASS, null);
