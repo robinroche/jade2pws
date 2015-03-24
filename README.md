@@ -32,7 +32,8 @@ It enables interfacing JADE agents with the power systems simulator PowerWorld.
 
 - In Matlab:
   - main.m: This is the main file, that establishes the TCP connection and handles messages.
-  - list_all_devices_in_file.m: This file can be used to list the devices, etc. in a PowerWorld file, directly from Matlab.    - It is easier to use than through JADE, but be careful about how data is formatted.
+  - list_all_devices_in_file.m: This file can be used to list the devices, etc. in a PowerWorld file, directly from Matlab.
+  - It is easier to use than through JADE, but be careful about how data is formatted.
   - The other files are just functions used by main.m for sending and retrieving data to/from PowerWorld.
 
 ### Using the code
